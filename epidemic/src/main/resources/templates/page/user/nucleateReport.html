@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>居民需求页面</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../css/public.css" media="all">
+    <script src="../../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+    <script src="../../js/jquery-3.6.0.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <form class="layui-form" action="" >
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户姓名：</label>
+                <div class="layui-input-block">
+                    <input name="name" lay-verify="title" class="layui-input" placeholder="请输入姓名">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">采样时间：</label>
+                <div class="layui-input-block">
+                    <input name="collectTime" id="date" lay-verify="title" class="layui-input" placeholder="请输入时间">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">检测时间</label>
+                <div class="layui-input-block">
+                    <input name="TestTime" id="date1" lay-verify="title" class="layui-input" placeholder="请输入时间">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">结果</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="result" value="1" title="阴" checked="">
+                    <input type="radio" name="result" value="2" title="阳">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="demo1">添加需求</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['form','laydate'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , laydate = layui.laydate;
+        laydate.render({
+            elem: '#date'
+            ,type: 'datetime' // 设置格式：日期时间
+            ,theme: '#393D49' // 自定义主题颜色
+
+        });
+        laydate.render({
+            elem: '#date1'
+            ,type: 'datetime' // 设置格式：日期时间
+            ,theme: '#393D49' // 自定义主题颜色
+
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function (data) {
+            console.log(data.field);
+            //ajax 调用接口
+            $.post("/api/nucleate/add.do",data.field,function(res){
+                if(res.code==200){
+                    //新增成功
+                    layer.msg('新增成功, 等待管理员处理！');
+                    location.href = "../../userindex.html";
+                }else{
+                    //新增失败
+                    layer.msg('新增失败！');
+                }
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

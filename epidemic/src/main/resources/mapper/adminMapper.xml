@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.epidemic.dao.AdminDao">
+    <resultMap id="BaseResult" type="com.example.epidemic.entity.Admin">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="password" property="password"></result>
+        <result column="phone" property="phone"></result>
+        <result column="email" property="email"></result>
+        <result column="info" property="info"></result>
+        <result column="ctime" property="ctime"></result>
+        <result column="flag" property="flag"></result>
+    </resultMap>
+
+    <sql id="AdminFindCriteria">
+        <where>
+            <if test="id != null" >and id=#{id}</if>
+            <if test="name != null and name != ''">and name = #{name}</if>
+            <if test="password != null and password != ''">and password = #{password}</if>
+            <if test="phone != null and phone != ''">and phone like "%" #{phone} "%"</if>
+            <if test="email != null and email != ''">and email like "%" #{email} "%"</if>
+            <if test="flag != null and flag != ''">and flag = #{flag} </if>
+        </where>
+    </sql>
+
+    <sql id="AdminUpdateCriteria">
+        <set>
+            <if test="id != null" >id = #{id},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="password != null and password != ''">password = #{password},</if>
+            <if test="phone != null  and phone != ''" >phone = #{phone},</if>
+            <if test="email != null and email != ''">email = #{email},</if>
+            <if test="info != null and info != ''">info = #{info},</if>
+            <if test="ctime != null ">ctime = #{ctime},</if>
+            <if test="flag != null and flag != ''">flag = #{flag},</if>
+        </set>
+    </sql>
+
+    <insert id="add" parameterType="Admin" keyProperty="id" useGeneratedKeys="true">
+        insert into a_admin(name, password, phone, email, info, ctime, flag) VALUES
+        (#{name},#{password},#{phone},#{email},#{info},#{ctime},#{flag})
+    </insert>
+
+    <insert id="addBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into a_admin(name, password, phone, email, info) VALUES
+        <foreach collection="list" item="admin" separator=",">
+            (#{admin.name},#{admin.password},#{admin.phone},#{admin.email},#{admin.info})
+        </foreach>
+    </insert>
+
+    <select id="selectByOne" resultMap="BaseResult">
+        select * from a_admin where name = #{name}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResult">
+        select * from a_admin
+    </select>
+
+    <select id="selectTotal">
+        select count(id) from a_admin
+    </select>
+
+    <delete id="del">
+        delete from a_admin where id = #{id};
+    </delete>
+
+    <delete id="delBatch">
+        delete from a_admin where id in(
+            <foreach collection="ids" item="id" separator=",">
+                #{id}
+            </foreach>
+            )
+    </delete>
+
+    <select id="selectByName" resultMap="BaseResult" >
+        select * from a_admin
+        <where>
+            <if test="name != null and name != ''"> and name like  #{name} </if>
+        </where>
+    </select>
+
+    <update id="update">
+        update a_admin
+        <include refid="AdminUpdateCriteria"></include>
+        where id = #{id}
+    </update>
+
+</mapper>

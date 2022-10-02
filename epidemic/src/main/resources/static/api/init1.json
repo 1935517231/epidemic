@@ -1,0 +1,100 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "page/welcome-3.html"
+  },
+  "logoInfo": {
+    "title": "",
+    "image": "images/sqyq_logo.png",
+    "href": ""
+  },
+
+  "menuInfo": [
+    {
+      "title": "统计模块",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "疫情统计",
+          "href": "",
+          "icon": "fa fa-calendar",
+          "target": "_self",
+          "child": [
+            {
+              "title": "百度疫情统计",
+              "href": "https://voice.baidu.com/act/newpneumonia/newpneumonia",
+              "icon": "fa fa-calendar",
+              "target": "_self"
+            },
+            {
+              "title": "统计管理",
+              "href": "page/form-step.html",
+              "icon": "fa fa-bar-chart",
+              "target": "_self"
+            }
+          ]
+        }
+
+      ]
+     },
+    {
+      "title": "用户留言模块",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "用户留言",
+          "href": "page/user/MessageAdd.html",
+          "icon": "fa fa-calendar",
+          "target": "_self"
+        }
+        ]
+    },
+    {
+      "title": "用户每日健康上报模块",
+      "href": "",
+      "icon": "fa fa-home",
+      "target": "_self",
+      "child": [
+        {
+          "title": "健康上报",
+          "href": "page/user/OwnHealthAdd.html",
+          "icon": "fa fa-tachometer",
+          "target": "_self"
+        }
+      ]
+    },
+    {
+      "title": "核酸检测上报",
+      "href": "",
+      "icon": "fa fa-window-maximize",
+      "target": "_self",
+      "child": [
+        {
+          "title": "核酸检测上报",
+          "href": "page/user/nucleateReport.html",
+          "icon": "fa fa-tachometer",
+          "target": "_self"
+        }
+      ]
+    },
+
+     {
+          "title": "管理员通知模块",
+          "href": "",
+          "icon": "fa fa-window-maximize",
+          "target": "_self",
+          "child": [
+            {
+              "title": "通知列表",
+              "href": "page/user/userNoticeList.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+      ]
+    }
+  ]
+}

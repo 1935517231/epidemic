@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/echarts.js"></script>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div id="main" style="width: 800px;height:600px;"></div>
+<script>
+// 1.基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('main'));
+// 2.指定图表的配置项和数据
+var option = {
+title: {
+text: '第一个图表'
+},
+tooltip: {},
+legend: {
+data: ['居民数量']
+},
+toolbox: {
+show: true,
+feature: {
+dataZoom: {
+yAxisIndex: 'none'
+},
+dataView: { readOnly: false },
+magicType: { type: ['line', 'bar'] },
+restore: {},
+saveAsImage: {}
+}
+},
+xAxis: {//x轴
+data: []
+},
+yAxis: {},
+series: [
+{
+name: '居民数量',
+type: 'bar',
+data: []
+}
+]
+};
+//3.使用刚指定的配置项和数据显示图表。
+myChart.setOption(option);
+//ajax 请求接口
+$.get("/api/path/selectTj.do",function(res){
+    if(res.code==200){
+        for (var i = 0 ; i<res.data.length; i++){
+            option.xAxis.data[i]=res.data[i].outLocation;
+            option.series[0].data[i]=res.data[i].num;
+        }
+
+
+        }
+        myChart.setOption(option)
+
+
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/echarts.js"></script>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div id="main" style="width: 800px;height:600px;"></div>
+<script>
+    // 1.基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    // 2.指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '每季度接种人数'
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                dataZoom: {
+                    yAxisIndex: 'none'
+                },
+                dataView: {readOnly: false},
+                magicType: {type: ['line', 'bar']},
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        xAxis: {//x轴
+            type: 'category',
+            data: ["第一季度","第二季度","第三季度","第四季度"]
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                type: 'bar',
+                data: []
+            }
+        ]
+    };
+    //3.使用刚指定的配置项和数据显示图表。
+    //ajax 请求接口
+    $.get("/api/echarts/find.do", function (res) {
+        console.log(res)
+        if (res.code == 200) {
+                option.series[0].data = res.data;
+        }
+        myChart.setOption(option)
+    })
+</script>
+</body>
+</html>

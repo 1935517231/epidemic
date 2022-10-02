@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../js/echarts.js"></script>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div id="main" style="width: 800px;height:600px;"></div>
+<script>
+// 1.基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('main'));
+// 2.指定图表的配置项和数据
+var option = {
+title: {
+text: '管理员'
+},
+tooltip: {},
+legend: {
+data: ['管理员状态']
+},
+toolbox: {
+show: true,
+feature: {
+dataZoom: {
+yAxisIndex: 'none'
+},
+dataView: { readOnly: false },
+magicType: { type: ['line', 'bar'] },
+restore: {},
+saveAsImage: {}
+}
+},
+xAxis: {//x轴
+data: ['正常', '异常']
+},
+yAxis: {},
+series: [
+{
+name: '管理员账号状态',
+type: 'bar',
+data: []
+}
+]
+};
+//3.使用刚指定的配置项和数据显示图表。
+myChart.setOption(option);
+//ajax 请求接口
+$.get("/api/admin/selectTj.do",function(res){
+    console.log(res);
+    if(res.code==200){
+       
+            option.xAxis.data[0]= '正常';
+            option.xAxis.data[1]= '异常 ';
+
+            option.series[0].data[0]=res.data[0].num;
+            option.series[0].data[1]=res.data[1].num;
+
+        }
+        myChart.setOption(option)
+
+
+})
+</script>
+</body>
+</html>

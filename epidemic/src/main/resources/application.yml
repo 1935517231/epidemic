@@ -1,0 +1,36 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    #MySQL连接信息，后面一连串的是用于解决时区时间差报错问题
+    url: jdbc:mysql://localhost:3306/epidemic?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    #账号
+    username: root
+    #密码
+    password: root
+    #驱动类
+    driver-class-name: com.mysql.jdbc.Driver
+  #禁用 thymeleaf缓存
+  thymeleaf:
+    #prefix: /templates/**
+    #suffix: .html
+    cache: false
+
+mybatis:
+  # 指定 mapper.xml 的位置
+  mapper-locations: classpath:/mapper/*.xml
+  #扫描实体类的位置,在此处指明扫描实体类的包，在 mapper.xml 中就可以不写实体类的全路径名
+  type-aliases-package: com.example.epidemic.entity
+  configuration:
+    #默认开启驼峰命名法，可以不用设置该属性
+    map-underscore-to-camel-case: true
+    # 控制台打印sql日志
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#pagehelper插件的版本要和springboot-patent的版本对应，版本过低会报循环错。
+pagehelper:
+  reasonable: true
+  support-methods-arguments: true
+
+

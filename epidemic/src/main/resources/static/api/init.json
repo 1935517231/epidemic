@@ -1,0 +1,547 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "page/welcome-3.html?t=1"
+  },
+  "logoInfo": {
+    "title": "",
+    "image": "images/sqyq_logo.png",
+    "href": ""
+  },
+
+  "menuInfo": [
+    {
+      "title": "管理员模块",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "疫情统计",
+          "href": "",
+          "icon": "fa fa-calendar",
+          "target": "_self",
+          "child": [
+            {
+              "title": "百度疫情统计",
+              "href": "https://voice.baidu.com/act/newpneumonia/newpneumonia",
+              "icon": "fa fa-calendar",
+              "target": "_self"
+            },
+            {
+              "title": "管理员账号统计管理",
+              "href": "page/admin/admintj.html",
+              "icon": "fa fa-bar-chart",
+              "target": "_self"
+            }
+
+          ]
+        },
+        {
+          "title": "账号信息",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "管理员列表",
+              "href": "page/admin/adminlist.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "批量导入数据",
+              "href": "page/admin/adminUpload.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "管理员健康信息",
+          "href": "",
+          "icon": "fa fa-group",
+          "target": "_self",
+          "child": [
+            {
+              "title": "管理员健康列表",
+              "href": "page/admin/adminHealthList.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "管理员每日健康上传",
+              "href": "page/admin/adminHealthAdd.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "管理员每日健康批量上传",
+              "href": "page/admin/adminHealthUpload.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "公告管理",
+          "href": "",
+          "icon": "fa fa-window-maximize",
+          "target": "_self",
+          "child": [
+            {
+              "title": "公告列表",
+              "href": "page/admin/adminNoticeList.html",
+              "icon": "fa fa-bell-o",
+              "target": "_self"
+            },
+            {
+              "title": "添加公告",
+              "href": "page/admin/adminNoticeAdd.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            },
+            {
+              "title": "批量导入公告",
+              "href": "page/admin/adminNoticeUpload.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "留言信息",
+          "href": "",
+          "icon": "fa fa-envelope-o",
+          "target": "_self",
+          "child": [
+            {
+              "title": "消息列表",
+              "href": "page/admin/adminMessageList.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+     },
+    {
+      "title": "居民模块",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "居民信息",
+          "href": "",
+          "icon": "fa fa-calendar",
+          "target": "_self",
+          "child": [
+            {
+              "title": "居民列表",
+              "href": "page/user/userList.html",
+              "icon": "fa fa-calendar",
+              "target": "_self"
+            },
+            {
+              "title": "增加用户",
+              "href": "page/user/userAdd.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            },
+
+            {
+              "title": "居民统计",
+              "href": "page/user/usertj.html",
+              "icon": "fa fa-bar-chart",
+              "target": "_self"
+            },
+            {
+              "title": "导入用户信息",
+              "href": "page/user/UserUpload.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "居民健康信息",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "体温检测记录",
+              "href": "page/user/heathList.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "添加体温检测",
+              "href": "page/user/heathAdd.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "居民体温上报记录",
+              "href": "page/user/healthCommitList.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "导入体温检测信息",
+              "href": "page/user/heathUpload.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "居家隔离管理",
+          "href": "",
+          "icon": "fa fa-window-maximize",
+          "target": "_self",
+          "child": [
+            {
+              "title": "居家隔离信息列表",
+              "href": "page/user/IsolateList.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "添加居家隔离人员",
+              "href": "page/user/IsolateAdd.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "导入居家隔离人员",
+              "href": "page/user/IsolateUpload.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "轨迹信息管理",
+          "href": "",
+          "icon": "fa fa-window-maximize",
+          "target": "_self",
+          "child": [
+            {
+              "title": "其他轨迹信息列表",
+              "href": "page/user/OtherLocusList.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "添加轨迹信息",
+              "href": "page/user/OtherLocusAdd.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "导入轨迹信息数据",
+              "href": "page/user/OtherLocusUpload.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+
+            {
+              "title": "来市路径信息列表",
+              "href": "page/user/PathList.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "添加来市路径信息",
+              "href": "page/user/PathAdd.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "导入来市路径信息",
+              "href": "page/user/PathUpload.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "出发地统计",
+              "href": "page/user/PathTj.html",
+              "icon": "fa fa-bar-chart",
+              "target": "_self"
+            }
+          ]
+        },
+
+
+
+
+        {
+          "title": "核酸检测信息",
+          "href": "",
+          "icon": "fa fa-gears",
+          "target": "_self",
+          "child": [
+            {
+              "title": "检测情况列表",
+              "href": "page/user/nucleateList.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "接种信息管理",
+      "icon": "fa fa-ellipsis-h",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "接种人员管理",
+          "href": "",
+          "icon": "fa fa-calendar",
+          "target": "_self",
+          "child": [
+            {
+              "title": "人员统计",
+              "href": "page/vaccine/findall.html",
+              "icon": "fa fa-calendar",
+              "target": "_self"
+            },
+            {
+              "title": "新增人员",
+              "href": "page/vaccine/insert.html",
+              "icon": "fa fa-navicon",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "未接种人员管理",
+          "href": "",
+          "icon": "fa fa-exchange",
+          "target": "",
+          "child": [
+            {
+              "title": "未接种人员",
+              "href": "page/vaccine/findNotYm.html",
+              "icon": "fa fa-exclamation",
+              "target": "_self"
+            }
+          ]},
+        {
+          "title": "接种情况",
+          "href": "//",
+          "icon": "fa fa-exclamation-circle",
+          "target": "",
+          "child": [
+            {
+              "title": "接种后状态统计",
+              "href": "page/vaccine/statuFindAll.html",
+              "icon": "fa fa-exclamation-triangle",
+              "target": "_self"
+            }
+          ]},
+        {
+          "title": "加强针注射情况",
+          "href": "//",
+          "icon": "fa fa-external-link",
+          "target": "",
+          "child": [
+            {
+              "title": "加强针注射统计",
+              "href": "page/vaccine/numFindAll.html",
+              "icon": "fa fa-external-link-square",
+              "target": "_self"
+            }
+
+          ]
+        },
+        {
+          "title": "注射图表统计",
+          "href": "",
+          "icon": "fa fa-exchange",
+          "target": "",
+          "child": [
+            {
+              "title": "柱状图统计",
+              "href": "page/vaccine/vaccinetj.html",
+              "icon": "fa fa-exclamation",
+              "target": "_self"
+            }
+          ]}
+      ]
+    },
+    {
+      "title": "疫情物资管理",
+      "icon": "fa fa-lemon-o",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "物资信息管理",
+          "href": "",
+          "icon": "fa fa-meetup",
+          "target": "",
+          "child": [
+            {
+              "title": "物资展示",
+              "href": "page/goods/goodslist.html",
+              "icon": "fa fa-briefcase",
+              "target": "_self"
+            },
+            {
+              "title": "添加物资信息",
+              "href": "page/goods/goodsadd.html",
+              "icon": "fa fa-plus-square",
+              "target": "_self"
+            }
+          ]
+        },
+
+        {
+          "title": "日志",
+          "href": "",
+          "icon": "fa fa-adn",
+          "target": "",
+          "child": [
+            {
+              "title": "物资日志",
+              "href": "page/goodsLog/goodsLoglist.html",
+              "icon": "fa fa-dot-circle-o",
+              "target": "_self"
+            }
+
+          ]
+        },
+        {
+          "title": "物资申请记录",
+          "href": "page/goodsApprove/goodsApprovelist.html",
+          "icon": "fa fa-rocket",
+          "target": "_self"
+        },
+        {
+          "title": "物资采购记录",
+          "href": "page/goodsPurchase/goodsPurchaselist.html",
+          "icon": "fa fa-rocket",
+          "target": "_self"
+        }
+      ]
+    },
+    {
+      "title": "访客模块",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "访客信息",
+          "href": "",
+          "icon": "fa fa-group",
+          "target": "_self",
+          "child": [
+            {
+              "title": "访客列表列表",
+              "href": "page/visitor/visitorlist.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "增加访客",
+              "href": "page/visitor/visitoradd.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "访客统计",
+              "href": "page/visitor/visitortj.html",
+              "icon": "fa fa-bar-chart",
+              "target": "_self"
+            },
+            {
+              "title": "访客批量导入",
+              "href": "page/visitor/visitorupload.html",
+              "icon": "fa fa-external-link",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "访客物资管理",
+          "href": "",
+          "icon": "fa fa-window-maximize",
+          "target": "_self",
+          "child": [
+            {
+              "title": "物资列表",
+              "href": "page/visitor/itemslist.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "添加访客物资",
+              "href": "page/visitor/itemsadd.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "物资批量导入",
+              "href": "page/visitor/itemsupload.html",
+              "icon": "fa fa-external-link",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "访客车辆管理",
+          "href": "",
+          "icon": "fa fa-window-maximize",
+          "target": "_self",
+          "child": [
+            {
+              "title": "车辆列表",
+              "href": "page/visitor/carlist.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "添加访客车辆",
+              "href": "page/visitor/caradd.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "车辆批量导入",
+              "href": "page/visitor/carupload.html",
+              "icon": "fa fa-external-link",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "访客留言信息",
+          "href": "",
+          "icon": "fa fa-envelope-o",
+          "target": "_self",
+          "child": [
+            {
+              "title": "消息列表",
+              "href": "page/visitor/messagelist.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "留言批量导入",
+              "href": "page/visitor/messageupload.html",
+              "icon": "fa fa-external-link",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

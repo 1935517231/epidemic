@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../css/public.css" media="all">
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <form class="layui-form" action="" lay-filter="example">
+            <!--输入框 可以设置type="hidden" 隐藏，外界看不见，但是可以提交数据 -->
+            <input name="id" type="hidden" class="layui-input">
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓名：</label>
+                <div class="layui-input-block">
+                    <input name="name" lay-verify="title" class="layui-input" placeholder="请输入姓名">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">手机号：</label>
+                <div class="layui-input-block">
+                    <input name="phone" lay-verify="title" class="layui-input" placeholder="请输入手机号">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否有中高风险地区居住史(地区)</label>
+                <div class="layui-input-block">
+                    <input name="reside" lay-verify="title" class="layui-input" placeholder="请输入">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否接触过类似症状的人(描述)</label>
+                <div class="layui-input-block">
+                    <input name="contacPeo" lay-verify="title" class="layui-input" placeholder="请输入">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否有野生动物接触史</label>
+                <div class="layui-input-block">
+                    <input name="contactAni" lay-verify="title" class="layui-input" placeholder="请输入">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否有农贸市场活动市</label>
+                <div class="layui-input-block">
+                    <input name="contactMar" lay-verify="title" class="layui-input" placeholder="请输入">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">'标记1正常,2危险'</label>
+                <div class="layui-input-block">
+                    <input name="flag" lay-verify="title" class="layui-input" placeholder="请输入1或者2">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="demo1">修改居民信息</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="../../js/jquery-3.6.0.min.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['form','laydate'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , laydate = layui.laydate;
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        //监听提交
+        form.on('submit(demo1)', function (data) {
+            //ajax 调用接口
+            $.post("/api/local/update.do",data.field,function(res){
+                if(res.code==200){
+                    //修改成功
+                    layer.msg('修改成功！');
+                    //关闭当前页面
+                    var iframeIndex = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(iframeIndex);
+                }else{
+                    //新增失败
+                    layer.msg('修改失败！');
+                }
+            });
+            return false;
+        });
+        //获取要编辑的内容
+        var json=localStorage.getItem("userOtherLocus");
+        console.log(json);
+        //表单初始赋值
+        form.val('example',eval("("+json+")"));
+    });
+</script>
+</body>
+</html>

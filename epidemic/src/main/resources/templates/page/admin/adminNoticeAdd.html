@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>新增通知页面</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../css/public.css" media="all">
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">标题：</label>
+                <div class="layui-input-block">
+                    <input name="title" lay-verify="title" class="layui-input" placeholder="请输入标题">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">内容：</label>
+                <div class="layui-input-block">
+                    <input name="content" lay-verify="title" class="layui-input" placeholder="请输入内容">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">管理员：</label>
+                <div class="layui-input-block">
+                    <input name="aname" lay-verify="title" class="layui-input" placeholder="请输入管理员姓名">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">状态：</label>
+                <div class="layui-input-block">
+                    <input name="flag" lay-verify="title" class="layui-input" placeholder="请输入状态">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="demo1">添加通知</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="../../js/jquery-3.6.0.min.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['form'], function () {
+        var form = layui.form
+            , layer = layui.layer;
+
+        //监听提交
+        form.on('submit(demo1)', function (data) {
+            console.log(data.field);
+            //ajax 调用接口
+            $.post("/api/adminNotice/add.do",data.field,function(res){
+                if(res.code==200){
+                    //新增成功
+                    layer.msg('新增成功！');
+                    location.href = "adminNoticeList.html";
+                }else{
+                    //新增失败
+                    layer.msg('新增失败！');
+                }
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

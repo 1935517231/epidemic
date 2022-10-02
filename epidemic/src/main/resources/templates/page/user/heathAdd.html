@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>新增居民</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../css/public.css" media="all">
+    <script src="../../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+    <script src="../../js/jquery-3.6.0.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <form class="layui-form" action="" >
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓名：</label>
+                <div class="layui-input-block">
+                    <input name="name" lay-verify="title" class="layui-input" placeholder="请输入用户姓名">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">自测体温：</label>
+                <div class="layui-input-block">
+                    <input name="selTemp" lay-verify="title" class="layui-input" placeholder="请输入自己检测的体温">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">自测体温的时间：</label>
+                <div class="layui-input-block">
+                    <input name="selTempTime" id="date1" lay-verify="title" class="layui-input" placeholder="请输入自测体温的时间">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">被测体温</label>
+                <div class="layui-input-block">
+                    <input name="byTemp" lay-verify="title" class="layui-input" placeholder="请输入被测体温">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">被测体温的时间</label>
+                <div class="layui-input-block">
+                    <input name="byTempTime"  id="date" lay-verify="title" class="layui-input" >
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">工作人员性名</label>
+                <div class="layui-input-block">
+                    <input name="adminName" lay-verify="title" class="layui-input" placeholder="请输入工作人员性名">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">健康状况</label>
+                <div class="layui-input-block">
+                    <input name="plCondition" lay-verify="title" class="layui-input" placeholder="请输入健康状况">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-block">
+                    <input name="flag" lay-verify="title" class="layui-input" placeholder="请输入状态">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="demo1">添加居民</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['form','laydate'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , laydate = layui.laydate;
+        laydate.render({
+            elem: '#date'
+            ,type: 'datetime' // 设置格式：日期时间
+            ,theme: '#393D49' // 自定义主题颜色
+
+        });
+        laydate.render({
+            elem: '#date1'
+            ,type: 'datetime' // 设置格式：日期时间
+            ,theme: '#393D49' // 自定义主题颜色
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function (data) {
+            console.log(data.field);
+            //ajax 调用接口
+            $.post("/api/heatlth/add.do",data.field,function(res){
+                if(res.code==200){
+                    //新增成功
+                    layer.msg('新增成功！');
+                    location.href = "heathList.html";
+                    layer.close(index);
+                }else{
+                    //新增失败
+                    layer.msg('新增失败！');
+                }
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
