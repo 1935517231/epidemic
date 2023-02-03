@@ -29,7 +29,7 @@ mybatis:
     #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 #pagehelper插件的版本要和springboot-patent的版本对应，版本过低会报循环错。
-pagehelper:
+page helper:
   reasonable: true
   support-methods-arguments: true
 
