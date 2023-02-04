@@ -11,21 +11,20 @@ import com.example.epidemic.excel.AdminExcel;
 import com.example.epidemic.service.Interface.AdminService;
 import com.example.epidemic.utils.PassUtils;
 import com.example.epidemic.utils.StringUtils;
+import com.example.epidemic.utils.TokenUtil;
 import com.example.epidemic.vo.PageBean;
 import com.example.epidemic.vo.ResultBean;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Author: gpt
@@ -39,6 +38,9 @@ public class AdminServiceImpl implements AdminService {
     //注入
     @Autowired
     private AdminDao adminDao;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @Override
     public ResultBean add(Admin admin) {
@@ -167,7 +169,13 @@ public class AdminServiceImpl implements AdminService {
             Admin admin1 = adminDao.selectByOne(admin.getName());
             if (admin1 != null) {
                 if (admin1.getPassword().equals(PassUtils.aesenc(key,admin.getPassword()))) {
-                    session.setAttribute("admin", admin);
+                    //生成token
+                    String loginTime = new Date().toString();
+                    String token = TokenUtil.sign(admin.getName(),loginTime);
+                    //断言判断token不为null
+                    assert token != null;
+                    redisTemplate.opsForValue().set(session.getId(),token);
+                    admin.setToken(token);
                     return ResultBean.ok(admin);
                 }
             }

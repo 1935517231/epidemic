@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     #MySQL连接信息，后面一连串的是用于解决时区时间差报错问题
-    url: jdbc:mysql://localhost:3306/epidemic?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/epidemic?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
     #账号
     username: root
     #密码
@@ -13,9 +13,17 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
   #禁用 thymeleaf缓存
   thymeleaf:
-    #prefix: /templates/**
-    #suffix: .html
+    prefix: /templates/**
+    suffix: .html
     cache: false
+
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/templates/
+
+  #redis连接
+  redis:
+    host: localhost
+    port: 6379
 
 mybatis:
   # 指定 mapper.xml 的位置

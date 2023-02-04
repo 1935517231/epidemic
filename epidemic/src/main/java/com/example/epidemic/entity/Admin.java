@@ -37,4 +37,6 @@ public class Admin {
      * 2表示被冻结*/
     private Integer flag ;
 
+    private String token;
+
 }
